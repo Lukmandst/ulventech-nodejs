@@ -28,3 +28,7 @@ npm start
 #start in dev mode
 npm run dev
 ```
+
+## Usage
+
+see the documentation at http://localhost:3000/api-doc

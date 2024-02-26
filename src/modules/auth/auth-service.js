@@ -1,4 +1,4 @@
-const { dbQuery } = require("../../../database")
+const { dbQuery } = require("../../utils/database")
 
 const AuthService = {
     async getUsername(username) {

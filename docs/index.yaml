@@ -1,0 +1,15 @@
+openapi: 3.0.0
+info:
+  title: ulventech-nodejs-api
+  description: This is a simple api that have basic admin/user registration, implement simple authentication and authorization with JWT, custom middleware, and sqlite as a database.
+  version: "0.1"
+  contact:
+    name: Lukman Dwi Susanto
+    email: lukmandwi11@gmail.com
+    url: https://github.com/Lukmandst/ulventech-nodejs.git
+components:
+  $ref: "./components.yaml"
+security:
+  - bearerAuth: []
+paths:
+  $ref: "./paths.yaml"

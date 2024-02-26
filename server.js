@@ -5,8 +5,9 @@ const bodyParser = require('body-parser')
 const app = express()
 const port = process.env.PORT || 3000
 
-const { dbConnection } = require('./database')
-const { errorHandler } = require('./src/middlewares/ApiError.js')
+const { dbConnection } = require('./src/utils/database.js')
+const { errorHandler } = require('./src/middlewares/ApiError.js');
+const swaggerDocs = require("./src/utils/swagger.js");
 let mainRouter = require('./src/routes/index')()
 
 
@@ -24,4 +25,6 @@ app.use(errorHandler)
 
 app.listen(port, () => {
     console.log(`API app listening on port ${port}`)
+
+    swaggerDocs(app, port)
 })

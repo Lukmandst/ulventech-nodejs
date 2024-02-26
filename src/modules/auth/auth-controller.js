@@ -15,7 +15,7 @@ const AuthController = {
             if (!regex.test(username)) throw new ApiError('only allowed alphanumeric', 500)
 
             const hashed = await bcrypt.hash(password, 9)
-            
+
             const data = { username: String(username).toLowerCase(), password: hashed, role_id: 2 }
 
             const result = await AuthService.postUsername(data)
@@ -49,10 +49,11 @@ const AuthController = {
             if (!regex.test(username)) throw new ApiError('only allowed alphanumeric', 500)
 
             const userData = await AuthService.getUserByName(username.toLowerCase())
-            
+
+            if (!userData || userData.length === 0) throw new ApiError("Username or Password is invalid!", 500)
             const role_id = userData.role_id
             const verify = await bcrypt.compare(password, userData.password);
-            if (!verify) throw new ApiError("Email or Password is invalid!", 500)
+            if (!verify) throw new ApiError("Username or Password is invalid!", 500)
 
             const payload = {
                 id: userData.id,
